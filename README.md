@@ -11,3 +11,10 @@
 4.jenkins进行持续集成
 5.utils中创建编写file_utils，文件，相对路径转换为绝对路径，其中
   返回绝对路径：os.path.abspath("..")  #上级目录的绝对路径
+  
+201225：
+1.学习configparser模块
+2.封装config_utils
+3.@property装饰器：将方法转换为属性访问
+4.优化file_utils 中代码,使用os.path.abspath(相对路径转换为绝对路径)
+5.若a,b,c,d,e= ['sadhs','shajkd',11,1213,343],那么abcde即对应列表中的五个值

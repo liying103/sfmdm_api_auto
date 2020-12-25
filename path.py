@@ -1,0 +1,1 @@
+ini_path = 'config/environment.ini'
