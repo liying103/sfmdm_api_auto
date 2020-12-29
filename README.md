@@ -18,3 +18,9 @@
 3.@property装饰器：将方法转换为属性访问
 4.优化file_utils 中代码,使用os.path.abspath(相对路径转换为绝对路径)
 5.若a,b,c,d,e= ['sadhs','shajkd',11,1213,343],那么abcde即对应列表中的五个值
+
+201227:
+1.封装excel_utils 模块，包阔读取合并单元格，读取总行数，总列数
+2.学习字典的setdefaultf方法，已存在就不变，没有就增加默认
+3.学习jsonpath取值
+4.封装data_analysis方法
