@@ -24,3 +24,8 @@
 2.学习字典的setdefaultf方法，已存在就不变，没有就增加默认
 3.学习jsonpath取值
 4.封装data_analysis方法
+
+210106:
+1.request_utils模块编写，get方法
+2.定义self.temporary = {} 临时变量，存储取值代码中所获得的值
+3.防止乱码:response.encoding = response.apparent_encoding
