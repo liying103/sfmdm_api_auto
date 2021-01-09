@@ -29,3 +29,9 @@
 1.request_utils模块编写，get方法
 2.定义self.temporary = {} 临时变量，存储取值代码中所获得的值
 3.防止乱码:response.encoding = response.apparent_encoding
+
+210109:
+1.request_utils post方法，分步执行，变量提取，赋值，校验
+其中get参数，post参数，header参数 存在空的情况处理
+2.check_utils 封装，根据属性执行相对应的方法
+3.pytest 参数化执行 
