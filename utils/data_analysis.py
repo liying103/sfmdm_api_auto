@@ -4,15 +4,16 @@ from path import *
 
 
 class DataAnalysis:
-    def __init__(self):
+    def __init__(self,sheet_name="Sheet1"):
         self.excel_path = fileutils.local_file(excel_path)
-        self.excelutils = ExcelUtils()
+        self.excelutils = ExcelUtils(sheet_name)
 
     def convert_testcase_data_dict(self):
         '''
         :return:  excel数据按模块区分，并以字典的形式输出
         '''
         self.data = self.excelutils.get_data_list()
+        print(self.data)
         testcase_dict = {}
         for data in self.data:
             if data['用例执行'] == '是':
@@ -36,4 +37,4 @@ if __name__ == '__main__':
     # for i,j in data.convert_testcase_data_dict().items():
     #     for a in  j:
     #         print(i,a)
-    print(data.convert_testcase_data_list())
+    data.convert_testcase_data_list()

@@ -16,16 +16,26 @@ class ExcelUtils:
         :return: 对应单元格的值
         '''
         cell_value = None
-        for min_x,max_x,min_y,max_y in self.sheet.merged_cells:
-            if min_x<= row_index and max_x>row_index:
-                if min_y <= col_index and max_y>col_index:
-                    cell_value=self.sheet.cell_value(min_x,min_y)
-                    return cell_value
+        if self.sheet.merged_cells:
+            for min_x,max_x,min_y,max_y in self.sheet.merged_cells:
+                if min_x<= row_index and max_x>row_index:
+                    if min_y <= col_index and max_y>col_index:
+                        cell_value=self.sheet.cell_value(min_x,min_y)
+                        return cell_value
+                    else:
+                        cell_value=self.sheet.cell_value(row_index,col_index)
+                        return cell_value
                 else:
                     cell_value=self.sheet.cell_value(row_index,col_index)
-            else:
-                cell_value=self.sheet.cell_value(row_index,col_index)
-        return cell_value
+                    return cell_value
+        else:
+            cell_value = self.sheet.cell_value(row_index,col_index)
+            return cell_value
+
+
+
+
+
 
 
     def get_rows(self):
@@ -56,4 +66,5 @@ class ExcelUtils:
 
 if __name__ == '__main__':
     value = ExcelUtils()
-    print(value.get_data_list())
+    # print(value.get_data_list())
+    print(value.get_merged_cell_value(1,1))

@@ -35,3 +35,11 @@
 其中get参数，post参数，header参数 存在空的情况处理
 2.check_utils 封装，根据属性执行相对应的方法
 3.pytest 参数化执行 
+
+210116：
+1.修复excel_utils中读取合并单元格bug，在没有合并单元格时数据读取
+2.添加pytestreport,在run_all_case中添加参数 '--pytest_report',report_html,'--pytest_title','接口自动化测试报告','--pytest_desc','智燃云'
+在testcases中添加 setup_class方法，通过log_info识别报告模块，其中取值需要优化excel数据
+3.优化excel数据，讲数据分模块建sheel，按模块添加testcase
+4.添加nb_log，还需完善
+5.添加SmtpReport发送邮件，报告以截图的方式发送，在run_all_case中引用
