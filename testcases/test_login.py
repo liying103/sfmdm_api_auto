@@ -3,7 +3,7 @@ import time
 from utils.log_utils import log
 from utils.data_analysis import DataAnalysis
 
-from utils.request_utils import RequestUtils
+from utils.request_utils import request
 
 
 
@@ -23,7 +23,6 @@ class TestLogin:
     @pytest.mark.parametrize('test_info',test_data)
     def test_login_case(self,test_info):
         log.info("$%s_%s$" % (test_info["case_id"],test_info["case_step"][0]['测试用例名称']))
-        request = RequestUtils()
         result = request.request_by_step(test_info["case_step"])
         assert result['check_result'],result['message']
 

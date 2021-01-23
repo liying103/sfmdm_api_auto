@@ -43,3 +43,6 @@
 3.优化excel数据，讲数据分模块建sheel，按模块添加testcase
 4.添加nb_log，还需完善
 5.添加SmtpReport发送邮件，报告以截图的方式发送，在run_all_case中引用
+
+2101223:
+1.使用numpy 对request_utils中的temporary进行赋值与存储，实现变量跨模块传输

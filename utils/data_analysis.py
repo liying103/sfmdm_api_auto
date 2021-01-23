@@ -13,7 +13,7 @@ class DataAnalysis:
         :return:  excel数据按模块区分，并以字典的形式输出
         '''
         self.data = self.excelutils.get_data_list()
-        print(self.data)
+
         testcase_dict = {}
         for data in self.data:
             if data['用例执行'] == '是':
