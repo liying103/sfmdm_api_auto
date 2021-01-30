@@ -1,6 +1,13 @@
 import json
 import jsonpath
 import re
+import time
+from nb_log import LogManager
+
+time_= time.strftime("%Y-%m-%d", time.localtime())
+log_name ='%s.log'%time_
+logger = LogManager('sfmdm_api_auto').get_logger_and_add_handlers(is_add_stream_handler=False,
+                                                                  log_filename=log_name)
 
 class CheckUtils:
 
@@ -38,18 +45,21 @@ class CheckUtils:
     def check_code(self,check_data):
         if check_data == self.response_body.status_code:
             return self.pass_result
+        logger.error('请求失败,预期状态码为:%s,实际状态码为：%s'%(check_data,self.response_body.status_code))
         return self.fail_result
     def __check_key(self,actual_result,check_datas):
         keys = check_datas.split(",")
         for item in keys:
             content = jsonpath.jsonpath(actual_result, "$.." + item)
             if not content:
+                logger.error('请求失败,预期结果为:%s,实际结果为：%s' % (keys, content))
                 return self.fail_result
         return self.pass_result
     def __check_key_value(self,actual_result,check_datas):
         for key, value in json.loads(check_datas).items():
             content = jsonpath.jsonpath(actual_result, "$.." + key)
             if not content or jsonpath.jsonpath(actual_result, "$.." + key)[0] != value:
+                logger.error('请求失败,实际结果中不存在：%s，%s' % (key,value ))
                 return self.fail_result
         return self.pass_result
 
@@ -59,6 +69,7 @@ class CheckUtils:
         data = re.findall(check_data,self.response_body.text)
         if data:
             return self.pass_result
+        logger.error('请求失败,预期结果为:%s,实际结果为：%s' % (check_data, self.response_body.text))
         return self.fail_result
     def check_body_key(self,check_datas):
         return self.__check_key(self.response_body.json(),check_datas)
@@ -71,6 +82,7 @@ class CheckUtils:
 
     def run_check(self,check_type,check_data):
         if check_type =="none" or not check_data:
+            logger.info('check_type= %s'%check_type)
             return self.type_check['none']()
         else:
             return self.type_check[check_type](check_data)

@@ -1,6 +1,6 @@
 import os
 from path import  ini_path
-from path import log_path
+
 
 class FileUtils:
     def local_file(self,path):
@@ -13,4 +13,4 @@ fileutils = FileUtils()
 
 if __name__ == '__main__':
 
-    print(fileutils.local_file(log_path))
+    print(fileutils.local_file(ini_path))
